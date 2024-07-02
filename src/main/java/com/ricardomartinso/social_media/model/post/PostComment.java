@@ -11,18 +11,19 @@ import java.util.Date;
 @Data
 public class PostComment {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
-    private Post post;
+    private Post postId;
 
     private String comment;
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User author;
+    private User userId;
 
     @Column
     private Date createdAt = new Date();

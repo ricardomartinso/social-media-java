@@ -1,6 +1,5 @@
 package com.ricardomartinso.social_media.model.post;
 
-
 import com.ricardomartinso.social_media.model.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -18,11 +17,12 @@ public class PostLike {
 
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
-    private Post post;
+    private Post postId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User userId;
 
-    private Date likedAt;
+    @Column
+    private Date createdAt;
 }
