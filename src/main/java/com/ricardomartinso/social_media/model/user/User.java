@@ -7,7 +7,7 @@ import lombok.*;
 
 import java.util.Date;
 import java.util.List;
-
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -16,32 +16,41 @@ import java.util.List;
 @Entity
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Column(nullable = false)
-    String firstName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(nullable = false)
-    String lastName;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
     @Column(nullable = false, unique = true)
-    String username;
+    private String username;
 
     @Column(nullable = false, unique = true)
-    String email;
+    private String email;
 
     @Column(nullable = false)
-    String password;
+    private String password;
 
-    @Column()
-    Date createdAt = new Date();
-
-    @Column()
-    Date updatedAt = new Date();;
-
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
 
-    @OneToMany
-    private List<PostLike> postLikes;
+    @OneToMany(mappedBy = "userId")
+    private Set<PostLike> postLikes;
+
+    @OneToMany(mappedBy = "userId")
+    private Set<UserFollow> follows;
+
+    @OneToMany(mappedBy = "followedUserId")
+    private Set<UserFollow> followers;
+
+    @Column(name = "created_at")
+    private Date createdAt = new Date();
+
+    @Column(name = "updated_at")
+    private Date updatedAt = new Date();
+
 }
