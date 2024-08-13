@@ -17,11 +17,11 @@ public class PostLike {
 
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
-    private Post postId;
+    private Post post;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User userId;
+    private User user;
 
     @Column
     private Date createdAt;

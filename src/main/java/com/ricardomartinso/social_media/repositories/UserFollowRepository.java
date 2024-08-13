@@ -1,6 +1,5 @@
 package com.ricardomartinso.social_media.repositories;
 
-import com.ricardomartinso.social_media.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ricardomartinso.social_media.model.user.UserFollow;

@@ -3,7 +3,9 @@ package com.ricardomartinso.social_media.model.user;
 import com.ricardomartinso.social_media.model.post.Post;
 import com.ricardomartinso.social_media.model.post.PostLike;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
@@ -35,16 +37,16 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private Set<PostLike> postLikes;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private Set<UserFollow> follows;
 
-    @OneToMany(mappedBy = "followedUserId")
+    @OneToMany(mappedBy = "followedUser")
     private Set<UserFollow> followers;
 
     @Column(name = "created_at")
@@ -52,5 +54,6 @@ public class User {
 
     @Column(name = "updated_at")
     private Date updatedAt = new Date();
+
 
 }

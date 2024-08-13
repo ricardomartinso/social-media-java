@@ -17,13 +17,13 @@ public class PostComment {
 
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
-    private Post postId;
+    private Post post;
 
     private String comment;
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
     @Column
     private Date createdAt = new Date();
