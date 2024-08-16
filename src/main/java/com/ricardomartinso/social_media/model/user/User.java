@@ -31,6 +31,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @Column(nullable = true, unique = false)
+    private String imageUrl;
+
     @Column(nullable = false, unique = true)
     private String email;
 
