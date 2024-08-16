@@ -1,6 +1,8 @@
-package com.ricardomartinso.social_media.config.exceptions;
+package com.ricardomartinso.social_media.config;
 
-import com.ricardomartinso.social_media.dtos.ResponseErrorDTO;
+import com.ricardomartinso.social_media.config.exceptions.PostNotFoundException;
+import com.ricardomartinso.social_media.config.exceptions.UserNotFoundException;
+import com.ricardomartinso.social_media.dtos.response.ResponseErrorDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

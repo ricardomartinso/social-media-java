@@ -1,4 +1,4 @@
-package com.ricardomartinso.social_media.repositories;
+package com.ricardomartinso.social_media.repositories.post;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

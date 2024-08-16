@@ -1,7 +1,7 @@
-package com.ricardomartinso.social_media.services;
+package com.ricardomartinso.social_media.services.user;
 
 import com.ricardomartinso.social_media.model.user.User;
-import com.ricardomartinso.social_media.repositories.UserRepository;
+import com.ricardomartinso.social_media.repositories.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
