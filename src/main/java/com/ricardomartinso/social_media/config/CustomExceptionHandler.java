@@ -1,6 +1,7 @@
 package com.ricardomartinso.social_media.config;
 
 import com.ricardomartinso.social_media.config.exceptions.PostNotFoundException;
+import com.ricardomartinso.social_media.config.exceptions.UserAlreadyExistException;
 import com.ricardomartinso.social_media.config.exceptions.UserNotFoundException;
 import com.ricardomartinso.social_media.dtos.response.ResponseErrorDTO;
 import org.springframework.http.HttpStatus;
@@ -23,5 +24,12 @@ public class CustomExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(new ResponseErrorDTO(e.getMessage(), HttpStatus.NOT_FOUND.name()));
+    }
+
+    @ExceptionHandler(UserAlreadyExistException.class)
+    public ResponseEntity<ResponseErrorDTO> handleUserAlreadyExistException(UserAlreadyExistException e) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(new ResponseErrorDTO(e.getMessage(), HttpStatus.CONFLICT.name()));
     }
 }
