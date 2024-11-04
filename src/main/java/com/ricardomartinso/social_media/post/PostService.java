@@ -25,7 +25,7 @@ public class PostService {
         this.postCommentRepository = postCommentRepository;
     }
 
-    public AllUserPostsDTO getAllPostsByUserId(Long userId) {
+    public AllUserPosts getAllPostsByUserId(Long userId) {
 
         Optional<User> user = userRepository.findById(userId);
 
@@ -40,7 +40,7 @@ public class PostService {
                 .map(EntityToDTOConverter::convertToPostDTO)
                 .toList();
 
-        return new AllUserPostsDTO(postsDTO);
+        return new AllUserPosts(postsDTO);
     }
 
     public List<PostCommentDetail> getAllPostComments(Long postId) {

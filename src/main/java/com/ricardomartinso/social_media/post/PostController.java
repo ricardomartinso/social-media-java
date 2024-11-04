@@ -23,7 +23,7 @@ public class PostController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<UserPostsResponse> getAllPostsByUser(@PathVariable Long userId) {
-        AllUserPostsDTO posts = postService.getAllPostsByUserId(userId);
+        AllUserPosts posts = postService.getAllPostsByUserId(userId);
         return ResponseEntity
                 .status(200)
                 .body(new UserPostsResponse(
