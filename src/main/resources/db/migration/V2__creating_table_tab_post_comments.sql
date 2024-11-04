@@ -1,5 +1,5 @@
 CREATE TABLE tab_post_comments (
-                                   id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                   id BIGSERIAL PRIMARY KEY,
                                    post_id BIGINT NOT NULL,
                                    comment TEXT,
                                    user_id BIGINT,
