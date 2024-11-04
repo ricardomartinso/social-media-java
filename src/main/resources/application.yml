@@ -2,23 +2,33 @@ spring:
   application:
     name: social-media
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/social_media_db
+    username: superuser
     password: password
   jpa:
-    database: h2
     hibernate:
       ddl-auto: none
-    database-platform: org.hibernate.dialect.H2Dialect
+    database: postgresql
+    show-sql: false
   flyway:
     baseline-on-migrate: true
-    user: sa
+    user: superuser
     password: password
-    url: jdbc:h2:mem:testdb
+    url: jdbc:postgresql://localhost:5432/social_media_db
+    locations: classpath:db/migration
+    baseline-version: 0
+    validate-on-migrate: true
   sql:
     init:
       mode: always
 rsa:
   private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem
+
+application:
+  security:
+    jwt:
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
