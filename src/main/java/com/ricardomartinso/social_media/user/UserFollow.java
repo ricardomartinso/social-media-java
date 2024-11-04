@@ -1,4 +1,4 @@
-package com.ricardomartinso.social_media.model.user;
+package com.ricardomartinso.social_media.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

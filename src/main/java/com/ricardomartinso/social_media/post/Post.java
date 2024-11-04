@@ -1,6 +1,6 @@
-package com.ricardomartinso.social_media.model.post;
+package com.ricardomartinso.social_media.post;
 
-import com.ricardomartinso.social_media.model.user.User;
+import com.ricardomartinso.social_media.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
 

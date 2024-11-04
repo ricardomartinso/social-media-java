@@ -1,4 +1,4 @@
-package com.ricardomartinso.social_media.config.exceptions;
+package com.ricardomartinso.social_media.errors.exceptions;
 
 public class UserAlreadyExistException extends RuntimeException {
 

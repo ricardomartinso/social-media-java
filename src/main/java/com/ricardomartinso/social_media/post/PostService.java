@@ -1,17 +1,9 @@
-package com.ricardomartinso.social_media.services.post;
+package com.ricardomartinso.social_media.post;
 
-import com.ricardomartinso.social_media.config.exceptions.PostNotFoundException;
-import com.ricardomartinso.social_media.config.exceptions.UserNotFoundException;
-import com.ricardomartinso.social_media.dtos.PostCommentDTO;
-import com.ricardomartinso.social_media.dtos.PostDTO;
-import com.ricardomartinso.social_media.dtos.UserPostsDTO;
-import com.ricardomartinso.social_media.model.post.Post;
-import com.ricardomartinso.social_media.model.post.PostComment;
-import com.ricardomartinso.social_media.model.user.User;
-import com.ricardomartinso.social_media.repositories.post.PostCommentRepository;
-import com.ricardomartinso.social_media.repositories.post.PostLikeRepository;
-import com.ricardomartinso.social_media.repositories.post.PostRepository;
-import com.ricardomartinso.social_media.repositories.user.UserRepository;
+import com.ricardomartinso.social_media.errors.exceptions.PostNotFoundException;
+import com.ricardomartinso.social_media.errors.exceptions.UserNotFoundException;
+import com.ricardomartinso.social_media.user.User;
+import com.ricardomartinso.social_media.user.UserRepository;
 import com.ricardomartinso.social_media.util.EntityToDTOConverter;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +25,7 @@ public class PostService {
         this.postCommentRepository = postCommentRepository;
     }
 
-    public UserPostsDTO getAllPostsByUserId(Long userId) {
+    public AllUserPostsDTO getAllPostsByUserId(Long userId) {
 
         Optional<User> user = userRepository.findById(userId);
 
@@ -48,10 +40,10 @@ public class PostService {
                 .map(EntityToDTOConverter::convertToPostDTO)
                 .toList();
 
-        return new UserPostsDTO(EntityToDTOConverter.convertToUserDTO(user.get()), postsDTO);
+        return new AllUserPostsDTO(postsDTO);
     }
 
-    public List<PostCommentDTO> getAllPostComments(Long postId) {
+    public List<PostCommentDetail> getAllPostComments(Long postId) {
         Optional<Post> post = postRepository.findById(postId);
 
         if (post.isEmpty()) {
@@ -60,8 +52,9 @@ public class PostService {
 
         List<PostComment> comments = postCommentRepository.findAllCommentsByPost(post.get());
 
-        return comments.stream()
-                        .map(EntityToDTOConverter::convertToPostCommentDTO).toList();
+        return comments
+                .stream()
+                .map(EntityToDTOConverter::convertToPostCommentDTO).toList();
 
     }
 }

@@ -1,8 +1,7 @@
-package com.ricardomartinso.social_media.repositories.post;
+package com.ricardomartinso.social_media.post;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ricardomartinso.social_media.model.post.Post;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
